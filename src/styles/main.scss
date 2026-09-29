@@ -9,18 +9,18 @@ $padding: 10px;
 }
 
 $week: (
-  'sun': 0,
-  'mon': 1,
-  'tue': 2,
-  'wed': 3,
-  'thu': 4,
-  'fri': 5,
-  'sat': 6
+  'mon': 0,
+  'tue': 1,
+  'wed': 2,
+  'thu': 3,
+  'fri': 4,
+  'sat': 5,
+  'sun': 6,
 );
 
 @each $day, $col in $week {
   .calendar--start-day-#{$day} .calendar__day:first-child {
-    margin-left: $col * ($calendar-element + $gap);
+    margin-left: calc(#{$col} * (#{$calendar-element} + #{$gap}));
   }
 }
 
@@ -41,8 +41,9 @@ body {
 
 .calendar {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
-  max-width: calc($calendar-element * 7 + 6 * $gap + 2 * $padding);
+  max-width: calc(#{$calendar-element} * 7 + #{$gap} * 6 + #{$padding} * 2);
   box-sizing: border-box;
   gap: $gap;
   padding: $padding;
